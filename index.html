@@ -5,6 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Independência Digital para Pais e Avós</title>
     <style>
+        /* REGRA GLOBAL DE SEGURANÇA (Impede o vazamento lateral) */
+        *, *::before, *::after {
+            box-sizing: border-box;
+        }
+
         /* Estilos CSS Embutidos */
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -13,6 +18,7 @@
             padding: 0;
             color: #333;
             background-color: #f9f9f9;
+            overflow-x: hidden; /* Garante que não haverá rolagem horizontal */
         }
         
         /* SEÇÃO PRINCIPAL (HERO) COM A CAPA */
@@ -25,11 +31,15 @@
             justify-content: center;
             gap: 40px;
             flex-wrap: wrap;
+            width: 100%;
         }
         .hero-text {
             flex: 1;
             min-width: 300px;
             max-width: 600px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
         }
         .hero-text h1 {
             font-size: 2.5em;
@@ -232,11 +242,15 @@
             fill: white;
         }
 
+        /* RESPONSIVIDADE PARA CELULARES */
         @media (max-width: 768px) {
             .hero {
                 flex-direction: column;
                 text-align: center;
                 padding: 40px 20px;
+            }
+            .hero-text {
+                align-items: center; /* Força o alinhamento central dos itens internos, incluindo o botão */
             }
             .hero-text h1 {
                 font-size: 2em;
